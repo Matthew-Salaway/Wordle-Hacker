@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from 'react'
 import { genWordArr } from "../Words"
 import { tableDefualt } from "../Words"
 import { AppContext } from "../App"
-import wordBank from "../wordle-bank.txt";
 
 
 
@@ -109,6 +108,11 @@ function HackerWords() {
                         wordTotal += (lookupTable[j][word[i]] * .5)
                     }
                 }
+                for(let k = i+1; k < 5; k++){
+                    if(word[i] == word[k]){
+                        wordTotal *= .33;
+                    }
+                }
             }
             arr.push({w: word, s: wordTotal})
         })
@@ -117,7 +121,7 @@ function HackerWords() {
         console.log(arr)
         
         return arr.map((word) => {
-                return <h1>{word.w} ... {word.s}</h1>
+                return <div className='words'>{word.w} - {(word.s/arr.length * 2).toFixed(3)}</div>
                 })
 
     }

@@ -5,6 +5,8 @@ import { createContext, useState, useEffect } from "react"
 import { boardDefault, generateWordSet, genWordArr } from "./Words"
 import GameOver from "./components/GameOver"
 import NavBar from "./components/NavBar"
+import swal from 'sweetalert';
+
 
 
 export const AppContext = createContext();
@@ -21,6 +23,7 @@ function App() {
   });
   const [correctWord, setCorrectWord] = useState("");
   const [validWords, setValidWords] = useState(["Hello"])
+  const [hackerOpen, setHackerOpen] = useState(false);
 
   useEffect(() => {
     generateWordSet().then((words) => {
@@ -60,7 +63,11 @@ function App() {
       setCurrAttempt({attempt: currAttempt.attempt + 1, letterPos: 0})
     }
     else{
-      alert("Not A Word")
+      swal("Not a word!", "You got this! Feel free to use a hint if you are stuck!", "error")
+    }
+
+    if(hackerOpen){
+      setHackerOpen(prev => !prev);
     }
 
     if(currWord.toLowerCase() === correctWord){
@@ -78,7 +85,7 @@ function App() {
 
   return (
     <div className="App">
-      <AppContext.Provider value={{ board, setBoard, currAttempt, setCurrAttempt, onDelete, onEnter, onSelectLetter, correctWord, setDisabledLetters, disabledLetters, almostLetters, setAlmostLetters, correctLetters, setCorrectLetters, setGameOver, gameOver, validWords, setValidWords }}>
+      <AppContext.Provider value={{ board, setBoard, currAttempt, setCurrAttempt, onDelete, onEnter, onSelectLetter, correctWord, setDisabledLetters, disabledLetters, almostLetters, setAlmostLetters, correctLetters, setCorrectLetters, setGameOver, gameOver, validWords, setValidWords, hackerOpen, setHackerOpen }}>
         <div className='game'>
           <NavBar />
           <Board />
