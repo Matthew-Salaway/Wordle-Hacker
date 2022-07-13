@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext } from 'react'
-import { genWordArr } from "../Words"
-import { tableDefualt } from "../Words"
-import { AppContext } from "../App"
+import React, { useEffect, useState, useContext } from 'react';
+import { genWordArr } from "../Words";
+import { tableDefualt } from "../Words";
+import { AppContext } from "../App";
 
 
 
@@ -10,36 +10,28 @@ import { AppContext } from "../App"
 function HackerWords() {
     const { currAttempt, disabledLetters, almostLetters, correctLetters, validWords, setValidWords } = useContext(AppContext)
     
-
     useEffect(() => {
         if(currAttempt.attempt == 0){
             genWordArr().then((words) => {
-              setValidWords(words.wordArr)
+              setValidWords(words.wordArr);
             });
         }
         else{
-            var temp = valid()
-            console.log(temp)
-            setValidWords(temp)
+            var temp = valid();
+            setValidWords(temp);
         }
       }, [currAttempt.attempt])
 
       function valid() {
-        console.log(disabledLetters)
-        console.log(almostLetters)
-        console.log(correctLetters)
         let newWords = [];
         for(let i = 0; i < validWords.length; i++){
             let v = true;
             let currentWord = validWords[i]
             for(let j = 0; j < 5; j++){
                 if(disabledLetters.includes((currentWord[j]).toUpperCase())){
-                    console.log(v)
                     v = false;
-                    console.log(v)
                 }
             }
-            
             if(v == false){continue}
             //correct
             for(let i = 0; i < correctLetters.length; i++){
@@ -63,31 +55,18 @@ function HackerWords() {
                     }
                 }
             }
-
             //add the word
             if(v){
                 newWords.push(currentWord)
                 console.log(currentWord)
             }
         }
-        console.log(validWords)
-        console.log(newWords)
         return newWords
     }
 
       function generateHackerWords(){
-        // if(currAttempt.attempt == 0){
-        // }
-        // else{
-        //     //generate new set of valid words
-        //     var temp = valid()
-        //     console.log(temp)
-        //     setValidWords(temp)
-        // }
-        console.log(validWords)
-
         //create lookup table
-        var lookupTable = structuredClone(tableDefualt);
+        var lookupTable = tableDefualt.map(a => {return {...a}});
         for(let i = 0; i < validWords.length; i++){ //traverse word set
             let currWord = validWords[i];
             for(let a = 0; a < 5; a++){ //traverse letters in word
@@ -96,7 +75,6 @@ function HackerWords() {
         }
 
         let arr = []
-        console.log(lookupTable)
         validWords.map((word) => {
             var wordTotal = 0
             for(let i = 0; i < 5; i++){ //traverse letters
@@ -118,17 +96,12 @@ function HackerWords() {
         })
         //sort the objects
         arr.sort((a,b) => b.s - a.s)
-        console.log(arr)
         
         return arr.map((word) => {
                 return <div className='words'>{word.w} - {(word.s/arr.length * 2).toFixed(3)}</div>
                 })
 
     }
-
-
-
-
   return (
     generateHackerWords()
   )

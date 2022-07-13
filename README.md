@@ -1,70 +1,21 @@
-# Getting Started with Create React App
+# Wordle Hacker
+https://wordlehacker-fc916.web.app/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description 
+Wordle, but with the option of hints. The hint button generates every valid word at that point in the game and ranks them.
 
-## Available Scripts
+## The Stack
+Built with React, hosted by firebase, and utilizes JS module sweeetalert for stylish alerts
 
-In the project directory, you can run:
+## Challenges
+Originally I generated the valid words through a recursive backtracking algorithm and then compared each one to all others in order to claculate its score. However, this is every inefficent. 
 
-### `yarn start`
+I instead used an algorithm that would invalidate words inside the current list of valid words to create the new list of valid words. Then it creats a 2D lookup table that contains the number of occurences of each letter in positions 1-5, since they are 5 letter words. From there, to score each word it checks to see how common the word is to other valid words, as a word that is common to the most words will on average statistically reveal/invalidate the most words on the valid list.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In all, the runtime was reduced from O(S^2 * L^2 + 26^L) to O(S * L)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Run Porject
+Clone the project, install dependencies, yarn start
+This will start the webiste on your local server
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project utilizes the MIT License, so change this project however you want and good luck!

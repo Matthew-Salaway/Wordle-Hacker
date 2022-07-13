@@ -1,10 +1,10 @@
 import './App.css';
-import Board from "./components/Board"
-import Keyboard from "./components/Keyboard"
-import { createContext, useState, useEffect } from "react"
-import { boardDefault, generateWordSet, genWordArr } from "./Words"
-import GameOver from "./components/GameOver"
-import NavBar from "./components/NavBar"
+import Board from "./components/Board";
+import Keyboard from "./components/Keyboard";
+import { createContext, useState, useEffect } from "react";
+import { boardDefault, generateWordSet, genWordArr } from "./Words";
+import GameOver from "./components/GameOver";
+import NavBar from "./components/NavBar";
 import swal from 'sweetalert';
 
 
@@ -28,10 +28,10 @@ function App() {
   useEffect(() => {
     generateWordSet().then((words) => {
       setWordSet(words.wordSet);
-      setCorrectWord(words.todaysWord)
+      setCorrectWord(words.todaysWord);
     });
     genWordArr().then((words) => {
-      setValidWords(words.wordArr)
+      setValidWords(words.wordArr);
     });
   }, []);
 
@@ -78,9 +78,6 @@ function App() {
     if(currAttempt.attempt === 5){
       setGameOver({gameOver: true, guessWord: false})
     }
-
-
-
   }
 
   return (

@@ -1,8 +1,9 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../App'
+import React, { useContext } from 'react';
+import { AppContext } from '../App';
 
 function GameOver() {
-    const {gameOver, currAttempt, correctWord} = useContext(AppContext)
+    const {gameOver, currAttempt, correctWord} = useContext(AppContext);
+    
     function reload(){
       window.location.reload();
     }
