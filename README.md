@@ -1,6 +1,12 @@
 # Wordle Hacker
 https://wordlehacker-fc916.web.app/
 
+### Computer Demo
+https://user-images.githubusercontent.com/60244026/178816906-a2b966df-06d3-42c8-9b07-72599191276d.mp4
+
+### Mobile Demo
+https://user-images.githubusercontent.com/60244026/178817816-aceba792-ceca-495b-aa1e-63def170e4ec.mp4
+
 ## Description 
 Wordle, but with the option of hints. The hint button generates every valid word at that point in the game and ranks them.
 
