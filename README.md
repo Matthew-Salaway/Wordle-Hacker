@@ -1,5 +1,5 @@
 # Wordle Hacker
-https://wordlehacker-fc916.web.app/
+https://wordle-hacker.vercel.app/
 
 ## Description 
 Wordle, but with the option of hints. The hint button generates every valid word at that point in the game and ranks them.
@@ -11,7 +11,7 @@ https://user-images.githubusercontent.com/60244026/178816906-a2b966df-06d3-42c8-
 https://user-images.githubusercontent.com/60244026/178817816-aceba792-ceca-495b-aa1e-63def170e4ec.mp4
 
 ## The Stack
-Built with React, hosted by firebase, and utilizes JS module sweeetalert for stylish alerts
+Built with React, hosted by vercel, and utilizes JS module sweeetalert for stylish alerts
 
 ## Challenges
 Originally I generated the valid words through a recursive backtracking algorithm and then compared each one to all others in order to claculate its score. However, this is every inefficent. 
