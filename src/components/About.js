@@ -2,7 +2,7 @@ import React from 'react';
 
 function About() {
   function website(){
-    window.open("https://www.usc.edu/", '_blank');
+    window.open("https://www.matthewsalaway.com", '_blank');
   }
   function git(){
     window.open("https://github.com/Msalaway/Wordle-Hacker", "_blank");
